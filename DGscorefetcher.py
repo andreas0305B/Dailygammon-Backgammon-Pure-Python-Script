@@ -113,6 +113,17 @@ import requests
 from bs4 import BeautifulSoup
 import openpyxl
 import re
+import requests
+from bs4 import BeautifulSoup
+import openpyxl
+import streamlit as st
+from dotenv import load_dotenv
+from openpyxl import Workbook
+import os
+import pandas as pd
+import sys
+import pytz
+from datetime import datetime
 
 # --- Login Data ---
 load_dotenv(dotenv_path="a.env")  # lokale .env laden
@@ -661,6 +672,7 @@ if AUTO_MODE:
     wb_xw.close()
 print("🏁 Script finished successfully")
 print("="*50)
+
 
 
 
