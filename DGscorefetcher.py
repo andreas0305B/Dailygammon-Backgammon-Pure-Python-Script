@@ -110,21 +110,38 @@ Core Concepts:
 # ============================================================
 
 import requests
-from bs4 import BeautifulSoup
+from BeautifulSoup
 import openpyxl
 import re
 import xlwings as xw
 
 # --- Login Data ---
+load_dotenv(dotenv_path="a.env")  # lokale .env laden
 login_url = "http://dailygammon.com/bg/login"
+
+# Zuerst versuchen, aus Streamlit-Secrets zu laden, sonst .env / Umgebungsvariablen
+try:
+    DG_LOGIN = st.secrets["dailygammon"]["login"]
+    DG_PW = st.secrets["dailygammon"]["password"]
+except Exception:
+    DG_LOGIN = os.getenv("DG_LOGIN", "")
+    DG_PW = os.getenv("DG_PW", "")
+
+# Prüfen, ob Login-Daten vorhanden sind
+if not DG_LOGIN or not DG_PW:
+    st.error("❌ Keine Login-Daten gefunden. Bitte in a.env oder .streamlit/secrets.toml eintragen.")
+    st.stop()
+
+# Debug-Ausgabe (Login maskieren, Passwort nicht ausgeben!)
+masked_login = DG_LOGIN[0] + "*" * (len(DG_LOGIN) - 2) + DG_LOGIN[-1] if len(DG_LOGIN) > 2 else DG_LOGIN
+
 payload = {
-    "login": "-------",                                                    # Your login input
-    "password": "------",                                                 # Your PW input
+    "login": DG_LOGIN,
+    "password": DG_PW,
     "save": "1"
 }
 
 BASE_URL = "http://dailygammon.com/bg/game/{}/0/list"
-
 saison_nummer = "34"                                                      # Current Saison input
 
 import sys
@@ -645,3 +662,4 @@ if AUTO_MODE:
     wb_xw.close()
 print("🏁 Script finished successfully")
 print("="*50)
+
