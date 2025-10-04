@@ -159,7 +159,7 @@ import sys
 if len(sys.argv) > 1:
     liga = sys.argv[1] 
 else:
-    liga = "4d"                                                           # Current Liga, if not started by wrapper script
+    liga = "3a"                                                           # Current Liga, if not started by wrapper script
 
 # detect if script was called from wrapper with '--auto'
 AUTO_MODE = "--auto" in sys.argv
@@ -672,6 +672,7 @@ if AUTO_MODE:
     wb_xw.close()
 print("🏁 Script finished successfully")
 print("="*50)
+
 
 
 
