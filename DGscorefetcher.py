@@ -110,7 +110,7 @@ Core Concepts:
 # ============================================================
 
 import requests
-from BeautifulSoup4
+from bs4 import BeautifulSoup
 import openpyxl
 import re
 import xlwings as xw
@@ -662,5 +662,6 @@ if AUTO_MODE:
     wb_xw.close()
 print("🏁 Script finished successfully")
 print("="*50)
+
 
 
