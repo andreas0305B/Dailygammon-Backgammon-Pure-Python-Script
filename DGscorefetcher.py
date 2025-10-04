@@ -113,7 +113,6 @@ import requests
 from bs4 import BeautifulSoup
 import openpyxl
 import re
-import xlwings as xw
 
 # --- Login Data ---
 load_dotenv(dotenv_path="a.env")  # lokale .env laden
@@ -662,6 +661,7 @@ if AUTO_MODE:
     wb_xw.close()
 print("🏁 Script finished successfully")
 print("="*50)
+
 
 
 
